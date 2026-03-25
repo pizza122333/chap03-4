@@ -1,0 +1,34 @@
+#include <iostream>
+#include <opencv2/opencv.hpp>
+
+using namespace cv;
+using namespace std;
+
+int main()
+{
+    // 1. 영상 불러오기 (파일이 실행 파일과 같은 폴더에 있어야 합니다)
+    Mat img1 = imread("C:\\Users\\chy73\\Downloads\\dog.bmp", IMREAD_COLOR);
+
+    if (img1.empty()) {
+        cerr << "Image load failed!" << endl;
+        return -1;
+    }
+
+    // 2. 그림판에서 구한 얼굴 영역 좌표 (x, y, 가로, 세로)
+    // 아래 숫자들을 본인이 그림판에서 찾은 숫자로 꼭 수정하세요!
+    Rect face_rect(150, 100, 200, 200);
+
+    // 3. 부분 행렬 추출 (얕은 복사 활용)
+    // 원본 img1의 특정 영역을 가리키는 'face' 객체를 만듭니다.
+    Mat face = img1(face_rect);
+
+    // 4. 추출된 영역을 파란색으로 변경
+    // Scalar(B, G, R) 순서이므로 파란색은 (255, 0, 0)입니다.
+    face.setTo(Scalar(255, 0, 0));
+
+    // 5. 결과 확인
+    imshow("Original Image (with blue face)", img1);
+
+    waitKey();
+    return 0;
+}
