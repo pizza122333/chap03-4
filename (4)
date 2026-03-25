@@ -7,7 +7,7 @@ using namespace std;
 int main()
 {
     // 1. 영상 불러오기
-    Mat img1 = imread("C:\\Users\\chy73\\Downloads\\dog.bmp", IMREAD_COLOR);
+    Mat img1 = imread("C:\\Users\\pizza\\Downloads\\dog.bmp", IMREAD_COLOR);
     if (img1.empty()) {
         cerr << "Image load failed!" << endl;
         return -1;
